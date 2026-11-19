@@ -10,63 +10,68 @@
             text-align: center;
             margin: 0;
             padding: 50px;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #3b0303; /* Dark red theme */
+            color: #ffffff;
         }
         .container {
-            background: white;
+            background: #5c0a0a; /* Slightly lighter dark red for the container */
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.6);
             display: inline-block;
-            max-width: 800px;
-            width: 100%;
+            max-width: 90%;
+            width: 1200px;
         }
         img {
-            max-width: 200px;
+            max-width: 220px;
             height: auto;
             margin-bottom: 20px;
+            /* Added a white background to ensure the logo stands out against the dark red */
+            background-color: white; 
+            border-radius: 50%;
+            padding: 10px;
         }
         h1 {
-            font-size: 2.5em;
+            font-size: 3.5em;
             margin-bottom: 20px;
         }
         #timer {
-            font-size: 8em;
+            font-size: 16em; /* Considerably larger timer */
             font-weight: bold;
-            color: #d9534f;
-            margin: 30px 0;
+            color: #ffcccc; /* Light contrasting color */
+            margin: 20px 0;
             font-variant-numeric: tabular-nums;
+            text-shadow: 4px 4px 15px rgba(0,0,0,0.4);
         }
         button {
-            padding: 15px 40px;
-            font-size: 1.5em;
-            background-color: #0275d8;
+            padding: 20px 50px;
+            font-size: 2em;
+            background-color: #8f1212;
             color: white;
-            border: none;
+            border: 2px solid #ffcccc;
             border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.1s;
         }
         button:hover {
-            background-color: #025aa5;
+            background-color: #b51717;
+            transform: scale(1.02);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Logo referenced verbatim[cite: 1] -->
-        <img src="logo (1).png" alt="St Eanswythe's Logo">
+        <!-- Updated to logo.png -->
+        <img src="logo.png" alt="St Eanswythe's Logo">
         
         <h1>St Eanswythe's Parents Evening November 19</h1>
         
         <div id="timer">10:00</div>
         
-        <!-- Button required to bypass browser autoplay restrictions -->
         <button id="startBtn">Start Timer</button>
     </div>
 
-    <!-- Audio element for the bell sound[cite: 2] -->
+    <!-- Audio element for the bell sound -->
     <audio id="bellSound" src="bell.wav" preload="auto"></audio>
 
     <script>
