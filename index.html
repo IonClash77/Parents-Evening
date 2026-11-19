@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>St Eanswythe's Parents Evening</title>
+    <title>St Eanswythes Parents Evening</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 0;
             padding: 50px;
-            background-color: #3b0303; /* Dark red theme */
+            background-color: #3b0303; 
             color: #ffffff;
         }
         .container {
-            background: #5c0a0a; /* Slightly lighter dark red for the container */
+            background: #5c0a0a; 
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.6);
@@ -26,20 +26,31 @@
             max-width: 220px;
             height: auto;
             margin-bottom: 20px;
-            /* Added a white background to ensure the logo stands out against the dark red */
             background-color: white; 
             border-radius: 50%;
             padding: 10px;
         }
         h1 {
             font-size: 3.5em;
-            margin-bottom: 20px;
+            margin-bottom: 5px; /* Tightened space between H1 and H2 */
+        }
+        h2 {
+            font-size: 2.2em; /* Slightly smaller than H1 */
+            margin-top: 0;
+            margin-bottom: 40px;
+            color: #ffcccc;
+            font-weight: normal;
+        }
+        .appointment-label {
+            font-size: 2.5em;
+            margin-top: 40px; /* Small space before the label */
+            margin-bottom: -15px; /* Pull it tight to the timer */
         }
         #timer {
-            font-size: 16em; /* Considerably larger timer */
+            font-size: 16em; 
             font-weight: bold;
-            color: #ffcccc; /* Light contrasting color */
-            margin: 20px 0;
+            color: #ffcccc; 
+            margin: 0 0 20px 0;
             font-variant-numeric: tabular-nums;
             text-shadow: 4px 4px 15px rgba(0,0,0,0.4);
         }
@@ -61,11 +72,12 @@
 </head>
 <body>
     <div class="container">
-        <!-- Updated to logo.png -->
-        <img src="logo.png" alt="St Eanswythe's Logo">
+        <img src="logo.png" alt="St Eanswythes Logo">
         
-        <h1>St Eanswythe's Parents Evening November 19</h1>
+        <h1>St Eanswythes Parents Evening</h1>
+        <h2>November 19</h2>
         
+        <div class="appointment-label">Appointment time:</div>
         <div id="timer">10:00</div>
         
         <button id="startBtn">Start Timer</button>
