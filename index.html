@@ -1,700 +1,129 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DEAD SECTOR // The Roll & Write Zombie Survival Game</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            abyss: '#060a12',
-            navy: {
-              950: '#0a1120',
-              900: '#0f172a',
-              800: '#1e293b',
-              700: '#1e3a8a',
-            },
-            crimson: {
-              600: '#dc2626',
-              700: '#b91c1c',
-              900: '#7f1d1d',
-            },
-            hazard: '#eab308',
-            toxic: '#22c55e'
-          },
-          fontFamily: {
-            stencil: ['"Black Ops One"', 'cursive'],
-            sans: ['Inter', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St Eanswythe's Parents Evening</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+            background-color: #f4f4f9;
+            color: #333;
         }
-      }
-    }
-  </script>
-  <style>
-    body {
-      background-color: #060a12;
-      color: #e2e8f0;
-      background-image: 
-        radial-gradient(circle at 20% 15%, rgba(185, 28, 28, 0.12) 0%, transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(30, 58, 138, 0.18) 0%, transparent 45%),
-        linear-gradient(rgba(15, 23, 42, 0.35) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 23, 42, 0.35) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
-    }
-
-    .hazard-stripe {
-      background: repeating-linear-gradient(
-        -45deg,
-        #eab308,
-        #eab308 14px,
-        #0a1120 14px,
-        #0a1120 28px
-      );
-    }
-
-    .crimson-stripe {
-      background: repeating-linear-gradient(
-        -45deg,
-        #991b1b,
-        #991b1b 12px,
-        #060a12 12px,
-        #060a12 24px
-      );
-    }
-
-    .blood-glow {
-      text-shadow: 0 0 25px rgba(220, 38, 38, 0.55);
-    }
-
-    .card-grit {
-      background: linear-gradient(160deg, rgba(15, 23, 42, 0.92) 0%, rgba(10, 17, 32, 0.98) 100%);
-      border: 1px solid rgba(51, 65, 85, 0.6);
-      box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.7);
-    }
-
-    .die-face {
-      transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-      user-select: none;
-    }
-    .die-face:hover:not(:disabled) {
-      transform: translateY(-3px) scale(1.03);
-    }
-  </style>
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: inline-block;
+            max-width: 800px;
+            width: 100%;
+        }
+        img {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        #timer {
+            font-size: 8em;
+            font-weight: bold;
+            color: #d9534f;
+            margin: 30px 0;
+            font-variant-numeric: tabular-nums;
+        }
+        button {
+            padding: 15px 40px;
+            font-size: 1.5em;
+            background-color: #0275d8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #025aa5;
+        }
+    </style>
 </head>
-<body class="antialiased selection:bg-crimson-600 selection:text-white">
-
-  <!-- TOP BIOHAZARD TAPE -->
-  <div class="hazard-stripe h-2.5 w-full"></div>
-  <div class="bg-navy-950/90 border-b border-slate-800/80 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <span class="w-9 h-9 rounded bg-crimson-600 flex items-center justify-center font-stencil text-xl text-white shadow-lg shadow-crimson-600/30 group-hover:bg-crimson-700 transition">DS</span>
-        <div>
-          <span class="font-stencil tracking-wider text-xl text-white block leading-none">DEAD SECTOR</span>
-          <span class="font-mono text-[10px] tracking-widest text-crimson-600 uppercase"> Pencil & Dice Survival Horror</span>
-        </div>
-      </a>
-      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#pitch" class="hover:text-white transition">The Experience</a>
-        <a href="#zones" class="hover:text-white transition">Quarantine Zones</a>
-        <a href="#demo" class="hover:text-crimson-500 transition font-semibold text-amber-400">Playable Encounter</a>
-        <a href="#under-the-hood" class="hover:text-white transition">How It Plays</a>
-      </nav>
-      <a href="#download" class="px-4 py-2 rounded bg-crimson-600 hover:bg-crimson-700 text-white font-mono text-xs uppercase tracking-wider font-bold shadow-lg shadow-crimson-600/25 transition">
-        Get Print & Play
-      </a>
-    </div>
-  </div>
-
-  <!-- HERO SECTION (PURE GAME PROMO) -->
-  <header class="relative overflow-hidden pt-14 pb-24 md:pt-20 md:pb-28 border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
+<body>
+    <div class="container">
+        <!-- Logo referenced verbatim[cite: 1] -->
+        <img src="logo (1).png" alt="St Eanswythe's Logo">
         
-        <!-- Left Column: Visceral Pitch -->
-        <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-crimson-900/40 border border-crimson-600/50 text-crimson-400 font-mono text-xs uppercase tracking-widest">
-            <span class="w-2 h-2 rounded-full bg-crimson-500 animate-pulse"></span>
-            Solo & Co-Op Roll-and-Write Survival Horror
-          </div>
-
-          <h1 class="font-stencil text-4xl sm:text-6xl lg:text-7xl text-white tracking-tight leading-[1.03] blood-glow">
-            EVERY GUNSHOT REDRAWS THE MAP. <span class="text-crimson-600">EVERY 1 COSTS A BREATH.</span>
-          </h1>
-
-          <p class="text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl">
-            Forget mossy stone corridors and static dungeon crawls. Grab a handful of D6s, a pencil, and a blank grid sheet. You are trapped inside a collapsing quarantine zone where your dice pool is your heartbeat, your flashlight battery is dying, and the walls are closing in.
-          </p>
-
-          <div class="flex flex-wrap gap-4 pt-2">
-            <a href="#demo" class="px-7 py-4 rounded-lg bg-crimson-600 hover:bg-crimson-700 text-white font-stencil tracking-wider text-lg shadow-xl shadow-crimson-900/50 transition flex items-center gap-3">
-              <span>SURVIVE THE PHARMACY BREACH</span>
-              <span class="font-mono text-xs bg-black/30 px-2 py-1 rounded">LIVE DEMO</span>
-            </a>
-            <a href="#zones" class="px-6 py-4 rounded-lg bg-navy-900 hover:bg-navy-800 border border-slate-700 text-slate-200 font-semibold transition">
-              Explore the 4 Tapes
-            </a>
-          </div>
-
-          <!-- Quick Specs Bar -->
-          <div class="pt-6 grid grid-cols-3 gap-4 border-t border-slate-800/80 max-w-lg font-mono text-xs">
-            <div>
-              <span class="text-slate-500 block">PLAYERS</span>
-              <span class="text-white font-bold text-sm">1–2 Survivors</span>
-            </div>
-            <div>
-              <span class="text-slate-500 block">EQUIPMENT</span>
-              <span class="text-white font-bold text-sm">6x D6 + Grid Sheet</span>
-            </div>
-            <div>
-              <span class="text-slate-500 block">PLAYTIME</span>
-              <span class="text-white font-bold text-sm">30–45 Mins</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Column: Atmospheric Emergency Broadcast Card -->
-        <div class="lg:col-span-5">
-          <div class="card-grit rounded-xl p-6 relative overflow-hidden border-t-4 border-t-crimson-600">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-5">
-              <div>
-                <span class="font-mono text-[11px] text-hazard uppercase tracking-widest block">TACTICAL DISPATCH // FLOOR 14</span>
-                <h2 class="font-stencil text-2xl text-white">SECTOR STATUS: OVERRUN</h2>
-              </div>
-              <span class="px-2.5 py-1 rounded bg-crimson-950 border border-crimson-700 font-mono text-xs text-crimson-400 font-bold">
-                5 dB NOISE
-              </span>
-            </div>
-
-            <!-- Visual Map Teaser -->
-            <div class="bg-abyss/90 border border-slate-800 rounded-lg p-4 mb-5 font-mono text-xs space-y-3">
-              <div class="grid grid-cols-6 gap-1.5 text-center">
-                <div class="h-9 rounded bg-navy-900/90 border border-slate-700 flex items-center justify-center text-slate-400">EXIT</div>
-                <div class="h-9 rounded bg-navy-900/90 border border-slate-700 flex items-center justify-center text-slate-500">⋅</div>
-                <div class="h-9 rounded bg-crimson-950/60 border border-crimson-700/60 flex items-center justify-center text-crimson-400" title="Biomass Infection">☣️</div>
-                <div class="h-9 rounded bg-crimson-950/60 border border-crimson-700/60 flex items-center justify-center text-crimson-400">☣️</div>
-                <div class="h-9 rounded bg-slate-950 border border-slate-900 flex items-center justify-center text-slate-700">?</div>
-                <div class="h-9 rounded bg-slate-950 border border-slate-900 flex items-center justify-center text-slate-700">?</div>
-
-                <div class="h-9 rounded bg-navy-900/90 border border-slate-700 flex items-center justify-center text-slate-500">⋅</div>
-                <div class="h-9 rounded bg-navy-800 border-2 border-amber-400 flex items-center justify-center text-amber-300 font-bold">YOU</div>
-                <div class="h-9 rounded bg-navy-900/90 border border-cyan-500/50 flex items-center justify-center text-cyan-300" title="Plate Glass Wall">🪟</div>
-                <div class="h-9 rounded bg-crimson-900/80 border border-crimson-500 flex items-center justify-center text-white font-bold animate-pulse">🧟</div>
-                <div class="h-9 rounded bg-slate-950 border border-slate-900 flex items-center justify-center text-slate-700">?</div>
-                <div class="h-9 rounded bg-slate-950 border border-slate-900 flex items-center justify-center text-slate-700">?</div>
-              </div>
-              <p class="text-slate-400 text-[11px] leading-relaxed">
-                <strong class="text-amber-400">FLASHLIGHT CONE:</strong> Your beam only reaches 3 squares into the ruined Pharmacy. Step into the dark to map the back exit—or smash through the drywall with your sledgehammer.
-              </p>
-            </div>
-
-            <!-- Dice Pool Preview -->
-            <div class="space-y-2">
-              <div class="flex justify-between text-xs font-mono">
-                <span class="text-slate-400">YOUR STAMINA POOL (4D6)</span>
-                <span class="text-crimson-400">1 DIE EXHAUSTED</span>
-              </div>
-              <div class="grid grid-cols-4 gap-2.5 pt-1">
-                <div class="p-2.5 rounded bg-crimson-950/80 border border-crimson-600 text-center">
-                  <span class="font-stencil text-2xl text-white block">6</span>
-                  <span class="font-mono text-[10px] text-crimson-300 uppercase">⚔️ CRIT</span>
-                </div>
-                <div class="p-2.5 rounded bg-crimson-950/80 border border-crimson-600 text-center">
-                  <span class="font-stencil text-2xl text-white block">4</span>
-                  <span class="font-mono text-[10px] text-crimson-300 uppercase">⚔️ HIT</span>
-                </div>
-                <div class="p-2.5 rounded bg-navy-800 border border-blue-500 text-center">
-                  <span class="font-stencil text-2xl text-blue-200 block">🛡️</span>
-                  <span class="font-mono text-[10px] text-blue-300 uppercase">GUARD</span>
-                </div>
-                <div class="p-2.5 rounded bg-slate-900 border border-slate-700 opacity-50 text-center">
-                  <span class="font-stencil text-2xl text-slate-500 block">1</span>
-                  <span class="font-mono text-[10px] text-slate-500 uppercase">LOCKED</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </header>
-
-  <!-- THREE PILLARS OF SURVIVAL (WHY IT FEELS DIFFERENT) -->
-  <section id="pitch" class="py-20 border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="max-w-3xl mb-14">
-        <span class="font-mono text-xs uppercase tracking-widest text-crimson-500 font-bold">SURVIVAL HORROR ON GRAPH PAPER</span>
-        <h2 class="font-stencil text-3xl sm:text-5xl text-white mt-2">YOUR MAP IS ALIVE. YOUR DICE ARE TIRING.</h2>
-        <p class="text-slate-400 mt-3 text-lg">
-          In classic dungeon crawlers, rooms sit quietly waiting for you to open the door. In <strong class="text-white">Dead Sector</strong>, every decision echoes two rooms ahead.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-7">
-        <!-- Pillar 1 -->
-        <div class="card-grit rounded-xl p-7 flex flex-col justify-between hover:border-crimson-600/60 transition">
-          <div>
-            <div class="w-12 h-12 rounded-lg bg-crimson-950 border border-crimson-700 flex items-center justify-center text-2xl mb-5">
-              🫁
-            </div>
-            <span class="font-mono text-xs text-crimson-400 uppercase tracking-wider">Pillar 01 // The Core Engine</span>
-            <h3 class="font-stencil text-2xl text-white mt-1 mb-3">THE BREATHING STAMINA POOL</h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Your D6 pool is both your fury and your shield. Every round, split your dice between violent <strong class="text-white">Attacks</strong> and unrolled <strong class="text-white">Guards</strong>. Swing with everything to drop a Screamer before it shrieks—or play it safe so a Sprinter doesn't tear your throat out. Roll a <strong class="text-crimson-400">1</strong>, and that die locks up from exhaustion.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 font-mono text-xs text-slate-400">
-            "Do I spend my last Grit to reroll that 1, or save it for the Riot Zombie down the hall?"
-          </div>
-        </div>
-
-        <!-- Pillar 2 -->
-        <div class="card-grit rounded-xl p-7 flex flex-col justify-between hover:border-amber-500/60 transition">
-          <div>
-            <div class="w-12 h-12 rounded-lg bg-amber-950/60 border border-amber-600/60 flex items-center justify-center text-2xl mb-5">
-              📢
-            </div>
-            <span class="font-mono text-xs text-amber-400 uppercase tracking-wider">Pillar 02 // Dynamic Map Decay</span>
-            <h3 class="font-stencil text-2xl text-white mt-1 mb-3">DECIBELS & DARKNESS</h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Fire a shotgun or pry open a security gate with a crowbar, and your <strong class="text-white">Decibel Tracker</strong> climbs. You add your current Noise level directly to your room-generation rolls—meaning the loud gunfight you survived in the Lobby literally draws swarms, blown-in windows, and fire into the rooms ahead.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 font-mono text-xs text-slate-400">
-            Power out? Roll 2D6: the lower die is how far your flashlight beam reaches into the dark.
-          </div>
-        </div>
-
-        <!-- Pillar 3 -->
-        <div class="card-grit rounded-xl p-7 flex flex-col justify-between hover:border-blue-500/60 transition">
-          <div>
-            <div class="w-12 h-12 rounded-lg bg-navy-800 border border-blue-600/60 flex items-center justify-center text-2xl mb-5">
-              🪟
-            </div>
-            <span class="font-mono text-xs text-blue-400 uppercase tracking-wider">Pillar 03 // Modern Architecture</span>
-            <h3 class="font-stencil text-2xl text-white mt-1 mb-3">GLASS, DRYWALL & BIOMASS</h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Peek through <strong class="text-white">Plate-Glass Storefronts</strong> to map the loot and undead inside before entering—just remember that fighting in the hallway will shatter the glass and pull them out. Cornered by spreading biomass? Spend a Sledgehammer point to draw your own exit straight through the drywall.
-            </p>
-          </div>
-          <div class="mt-6 pt-4 border-t border-slate-800/80 font-mono text-xs text-slate-400">
-            Lock doors and draw barricades behind you so your extraction route doesn't become a tomb.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE FOUR QUARANTINE TAPES (CAMPAIGN SETTINGS) -->
-  <section id="zones" class="py-20 bg-navy-950/60 border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-        <div>
-          <span class="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold">4 STANDALONE SCENARIO TAPES</span>
-          <h2 class="font-stencil text-3xl sm:text-5xl text-white mt-2">CHOOSE YOUR SLAUGHTERHOUSE</h2>
-        </div>
-        <p class="text-slate-400 max-w-md text-sm">
-          Each setting uses the same 2D6 split-dice engine to transform your graph paper into a completely different survival nightmare.
-        </p>
-      </div>
-
-      <div class="grid sm:grid-cols-2 gap-6">
-        <!-- Setting 1 -->
-        <div class="card-grit rounded-xl p-6 border-l-4 border-l-blue-500">
-          <div class="flex justify-between items-start mb-3">
-            <span class="font-mono text-xs px-2.5 py-1 rounded bg-blue-950 text-blue-300 border border-blue-800">TAPE 01 // VERTICAL BREACH</span>
-            <span class="font-mono text-xs text-slate-400">Difficulty: ★★☆</span>
-          </div>
-          <h3 class="font-stencil text-2xl text-white mb-2">THE DEAD MEGAMALL & HIGH-RISE</h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-4">
-            Ascend a 40-story quarantine tower or cross a sprawling dead mall to reach rooftop evac. Features plate-glass storefronts, security shutters, pharmacy loot runs, and atrium escalators.
-          </p>
-          <div class="font-mono text-xs text-blue-300 bg-abyss/70 p-3 rounded border border-slate-800">
-            <strong>Signature Rule:</strong> Split-Dice Blueprints (Die 1 draws room footprint; Die 2 spawns storefront purpose & loot).
-          </div>
-        </div>
-
-        <!-- Setting 2 -->
-        <div class="card-grit rounded-xl p-6 border-l-4 border-l-amber-500">
-          <div class="flex justify-between items-start mb-3">
-            <span class="font-mono text-xs px-2.5 py-1 rounded bg-amber-950/80 text-amber-300 border border-amber-800">TAPE 02 // THE GRIDLOCK</span>
-            <span class="font-mono text-xs text-slate-400">Difficulty: ★★★</span>
-          </div>
-          <h3 class="font-stencil text-2xl text-white mb-2">HIGHWAY OVERPASS MILE 14</h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-4">
-            A six-lane highway overpass choked with jackknifed 18-wheelers, FEMA tents, and military blockades with a sheer drop on both sides. Squeeze between bumpers or breach the back of an ambulance for meds.
-          </p>
-          <div class="font-mono text-xs text-amber-300 bg-abyss/70 p-3 rounded border border-slate-800">
-            <strong>Signature Rule:</strong> Shifting Walls — rolling doubles on an encounter pushes vehicle clusters down the page under the weight of the horde.
-          </div>
-        </div>
-
-        <!-- Setting 3 -->
-        <div class="card-grit rounded-xl p-6 border-l-4 border-l-crimson-600">
-          <div class="flex justify-between items-start mb-3">
-            <span class="font-mono text-xs px-2.5 py-1 rounded bg-crimson-950 text-crimson-300 border border-crimson-800">TAPE 03 // TOTAL BLACKOUT</span>
-            <span class="font-mono text-xs text-slate-400">Difficulty: ★★★</span>
-          </div>
-          <h3 class="font-stencil text-2xl text-white mb-2">SUB-BASEMENT GENERATOR RUN</h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-4">
-            The grid has failed. Navigate pitch-black maintenance tunnels where your flashlight beam only reveals the front half of any room you open. Step into the unmapped dark to find the exits.
-          </p>
-          <div class="font-mono text-xs text-crimson-300 bg-abyss/70 p-3 rounded border border-slate-800">
-            <strong>Signature Rule:</strong> Flashlight Cones & Noise Amplification — gunshots echo in concrete tunnels (+2 Decibels per shot).
-          </div>
-        </div>
-
-        <!-- Setting 4 -->
-        <div class="card-grit rounded-xl p-6 border-l-4 border-l-emerald-500">
-          <div class="flex justify-between items-start mb-3">
-            <span class="font-mono text-xs px-2.5 py-1 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">TAPE 04 // INFECTION VECTOR</span>
-            <span class="font-mono text-xs text-slate-400">Difficulty: ★★★★</span>
-          </div>
-          <h3 class="font-stencil text-2xl text-white mb-2">CDC BIO-LAB CONTAINMENT</h3>
-          <p class="text-slate-300 text-sm leading-relaxed mb-4">
-            Grab the antiviral samples on Sub-Level 3 and make it back to the airlock alive. Rolling doubles shades the room in living biomass that creeps through open doorways into cleared rooms every turn milestone.
-          </p>
-          <div class="font-mono text-xs text-emerald-300 bg-abyss/70 p-3 rounded border border-slate-800">
-            <strong>Signature Rule:</strong> The Tethered Escape — weld doors shut and draw barricades on your way in, or your return trip becomes a death trap.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INTERACTIVE PLAYABLE ENCOUNTER ("TRY A TURN RIGHT NOW") -->
-  <section id="demo" class="py-20 border-b border-slate-800/80 relative">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6">
-      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-4">
-        <div>
-          <span class="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold">INTERACTIVE TACTICAL DEMO</span>
-          <h2 class="font-stencil text-3xl sm:text-5xl text-white mt-1">TEST YOUR NERVE: BREACH & SURVIVE</h2>
-          <p class="text-slate-400 mt-2 max-w-2xl">
-            Experience how the 2D6 Room Breach and Stamina Pool combat lock together. Map a new storefront, watch your Decibel level, and allocate your dice between Attack and Guard.
-          </p>
-        </div>
-        <div class="flex flex-wrap gap-2">
-          <button onclick="loadPreset('pharmacy')" class="px-3.5 py-2 rounded bg-crimson-900/60 hover:bg-crimson-700 border border-crimson-500/60 text-xs font-mono text-white transition">
-            Load "Pharmacy Sprinter" Scenario
-          </button>
-          <button onclick="resetDemo()" class="px-3.5 py-2 rounded bg-navy-900 hover:bg-navy-800 border border-slate-700 text-xs font-mono text-slate-300 transition">
-            Reset Run
-          </button>
-        </div>
-      </div>
-
-      <div class="grid lg:grid-cols-12 gap-8">
+        <h1>St Eanswythe's Parents Evening November 19</h1>
         
-        <!-- Left: 2D6 Blueprint & Noise Scanner (5 cols) -->
-        <div class="lg:col-span-5 card-grit rounded-xl p-6 flex flex-col justify-between border-t-4 border-t-blue-600">
-          <div>
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
-              <div>
-                <span class="font-mono text-[10px] text-blue-400 uppercase tracking-widest block">STEP 1 // 2D6 BLUEPRINT BREACH</span>
-                <h3 id="roomTitle" class="font-stencil text-xl text-white">3x5 PHARMACY STOREFRONT</h3>
-              </div>
-              <div class="text-right">
-                <span class="font-mono text-[10px] text-slate-400 block">NOISE LEVEL</span>
-                <span id="dbBadge" class="font-mono text-sm font-bold text-amber-400">2 / 6 dB</span>
-              </div>
-            </div>
-
-            <!-- Noise Meter Visual -->
-            <div class="mb-4">
-              <div class="grid grid-cols-6 gap-1.5" id="dbBars"></div>
-              <div class="flex justify-between font-mono text-[10px] text-slate-500 mt-1">
-                <span>SILENT (0 dB)</span>
-                <span>SWARM ALERT (6 dB)</span>
-              </div>
-            </div>
-
-            <!-- Mini 6x6 Blueprint Grid -->
-            <div class="bg-abyss border border-slate-800 rounded-lg p-3 mb-4">
-              <div class="flex justify-between items-center mb-2 font-mono text-[11px]">
-                <span id="roomCoords" class="text-blue-300">Footprint: 3x5 Grid</span>
-                <label class="flex items-center gap-1.5 text-amber-400 cursor-pointer">
-                  <input type="checkbox" id="flashlightToggle" onchange="renderGrid()" class="rounded bg-slate-900 border-slate-700 text-amber-500">
-                  <span>Flashlight Outage</span>
-                </label>
-              </div>
-              <div id="blueprintGrid" class="grid grid-cols-6 gap-1 aspect-square max-w-[250px] mx-auto"></div>
-              <p id="roomTraitText" class="font-mono text-[11px] text-slate-400 mt-3 text-center">
-                D1 [3] Storefront + D2 [3] Pharmacy: Meds available, high risk of fast infected.
-              </p>
-            </div>
-          </div>
-
-          <div class="space-y-2.5">
-            <button onclick="breachNextRoom()" class="w-full py-3 rounded-lg bg-blue-700 hover:bg-blue-600 text-white font-stencil tracking-wider text-base transition shadow-lg shadow-blue-950/60">
-              🎲 ROLL 2D6: BREACH NEXT ROOM
-            </button>
-            <div class="grid grid-cols-2 gap-2 font-mono text-xs">
-              <button onclick="peekGlass()" class="py-2 px-3 rounded bg-navy-900 hover:bg-navy-800 border border-slate-700 text-cyan-300 transition">
-                🪟 Peek Glass Door
-              </button>
-              <button onclick="smashDrywall()" class="py-2 px-3 rounded bg-navy-900 hover:bg-navy-800 border border-slate-700 text-amber-300 transition">
-                🔨 Smash Drywall (+1 dB)
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Stamina Pool Combat Engine (7 cols) -->
-        <div class="lg:col-span-7 card-grit rounded-xl p-6 flex flex-col justify-between border-t-4 border-t-crimson-600">
-          <div>
-            <!-- Survivor & Loadout Header -->
-            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4 mb-5">
-              <div class="flex items-center gap-3">
-                <select id="weaponSelect" onchange="changeLoadout()" class="bg-navy-900 border border-slate-700 rounded px-3 py-1.5 font-mono text-xs text-white">
-                  <option value="bladed" selected>🪓 Fire Axe (Hit 4+ | 2 Dmg | 6=3 Dmg, 1=Stuck)</option>
-                  <option value="blunt">🏏 Crowbar (Hit 4+ | 1 Dmg | 6=Stun -2 Dmg)</option>
-                  <option value="agile">🔪 Combat Knife (Hit 3+ | 1 Dmg | R1 Safe 1s)</option>
-                  <option value="firearm">🔫 9mm Pistol (Hit 3+ | 3 Dmg | +1 dB Noise)</option>
-                </select>
-                <select id="zombieSelect" onchange="changeZombie()" class="bg-crimson-950/70 border border-crimson-700/70 rounded px-3 py-1.5 font-mono text-xs text-crimson-200">
-                  <option value="sprinter" selected>⚡ Sprinter (3 HP | 3 Dmg | Hits on 5–6)</option>
-                  <option value="shambler">🧟 Shambler (4 HP | 2 Dmg | Relentless Grab)</option>
-                  <option value="riot">🛡️ Riot-Gear (8 HP | 2 Dmg | Armor -1 & 6 to Kill)</option>
-                  <option value="bloater">☣️ Bloater (6 HP | 1 Dmg | 1s Deal Spore Dmg)</option>
-                  <option value="screamer">📢 Screamer (2 HP | 1 Dmg | Calls Horde on 5–6)</option>
-                </select>
-              </div>
-
-              <div class="flex items-center gap-4 font-mono text-xs">
-                <div>
-                  <span class="text-slate-400">HP:</span>
-                  <span id="playerHpText" class="text-emerald-400 font-bold">10/10</span>
-                </div>
-                <div>
-                  <span class="text-slate-400">GRIT:</span>
-                  <span id="playerGritText" class="text-amber-400 font-bold">1</span>
-                </div>
-                <div>
-                  <span class="text-slate-400">ROUND:</span>
-                  <span id="roundText" class="text-white font-bold">1</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Active Threat Card -->
-            <div class="bg-crimson-950/30 border border-crimson-800/60 rounded-lg p-4 mb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <div class="flex items-center gap-2">
-                  <span id="zombieName" class="font-stencil text-2xl text-white">SPRINTER</span>
-                  <span id="zombieStatsBadge" class="font-mono text-xs px-2 py-0.5 rounded bg-crimson-900/80 text-crimson-200">Bite: 3 Dmg</span>
-                </div>
-                <p id="zombieTraitDesc" class="text-xs text-slate-300 mt-1">
-                  <strong>Blur of Speed:</strong> Melee attacks only hit on 5 or 6 (Firearms hit on 3+).
-                </p>
-              </div>
-              <div class="sm:text-right min-w-[130px]">
-                <div class="font-mono text-xs text-crimson-300 mb-1">ZOMBIE HP: <span id="zombieHpText" class="font-bold text-white">3 / 3</span></div>
-                <div class="w-full h-2.5 bg-abyss rounded-full overflow-hidden border border-crimson-900">
-                  <div id="zombieHpBar" class="h-full bg-crimson-600 transition-all duration-300" style="width: 100%"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Interactive Stamina Dice Tray -->
-            <div class="mb-5">
-              <div class="flex items-center justify-between mb-2">
-                <span class="font-mono text-xs text-slate-300 uppercase tracking-wider">
-                  STEP 2 // CLICK DICE TO TOGGLE <span class="text-crimson-400 font-bold">ATTACK (⚔️)</span> OR <span class="text-blue-400 font-bold">GUARD (🛡️)</span>
-                </span>
-                <button onclick="addPoolDie()" class="font-mono text-[11px] text-blue-400 hover:underline">+ Level Up Pool (Max 6D6)</button>
-              </div>
-
-              <div id="diceContainer" class="grid grid-cols-3 sm:grid-cols-6 gap-3 my-3"></div>
-            </div>
-          </div>
-
-          <!-- Action Controls & Combat Log -->
-          <div class="space-y-3">
-            <div class="flex flex-wrap gap-2.5">
-              <button id="rollAttackBtn" onclick="rollCombatTurn()" class="flex-1 py-3 px-5 rounded-lg bg-crimson-600 hover:bg-crimson-700 text-white font-stencil tracking-wider text-base transition shadow-lg shadow-crimson-950/70">
-                ⚔️ ROLL ATTACK DICE
-              </button>
-              <button id="resolveTurnBtn" onclick="resolveCombatTurn()" class="hidden flex-1 py-3 px-5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-stencil tracking-wider text-base transition">
-                ⚡ RESOLVE DAMAGE & ZOMBIE BITE
-              </button>
-              <button id="secondWindBtn" onclick="useSecondWind()" class="py-3 px-4 rounded-lg bg-navy-900 hover:bg-navy-800 border border-slate-700 font-mono text-xs text-blue-300 transition" title="Spend your turn rolling 0 Attack dice to recover 1 Exhausted die">
-                🫁 Second Wind
-              </button>
-            </div>
-
-            <div id="combatLog" class="bg-abyss border border-slate-800 rounded-lg p-3.5 font-mono text-xs text-slate-300 h-28 overflow-y-auto space-y-1">
-              <div class="text-amber-400">&gt; Pharmacy Door breached! A Sprinter lunges from behind the counter.</div>
-              <div class="text-slate-400">&gt; Click your Stamina Dice above to assign Attack (⚔️) or Guard (🛡️), then click Roll.</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+        <div id="timer">10:00</div>
+        
+        <!-- Button required to bypass browser autoplay restrictions -->
+        <button id="startBtn">Start Timer</button>
     </div>
-  </section>
 
-  <!-- ARSENAL & INFECTED SHOWCASE (FLAVOR-FIRST CARDS) -->
-  <section id="under-the-hood" class="py-20 border-b border-slate-800/80">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 space-y-16">
-      
-      <!-- Weapons Header -->
-      <div>
-        <div class="max-w-2xl mb-10">
-          <span class="font-mono text-xs uppercase tracking-widest text-crimson-500 font-bold">IMPROVISED LETHALITY</span>
-          <h2 class="font-stencil text-3xl sm:text-5xl text-white mt-1">WEAPONS THAT CHANGE HOW YOUR DICE BEHAVE</h2>
-          <p class="text-slate-400 mt-2 text-base">
-            No complex attack charts to memorize. Your weapon tells you which die faces hit, what happens when you roll a natural <strong class="text-white">6</strong>, and the price you pay on a <strong class="text-crimson-400">1</strong>.
-          </p>
-        </div>
+    <!-- Audio element for the bell sound[cite: 2] -->
+    <audio id="bellSound" src="bell.wav" preload="auto"></audio>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <!-- Blunt -->
-          <div class="card-grit rounded-xl p-5 border-t-2 border-t-slate-400">
-            <div class="flex justify-between items-center font-mono text-xs text-slate-400 mb-2">
-              <span>BLUNT // CONTROL</span>
-              <span class="text-white font-bold">HIT: 4–6</span>
-            </div>
-            <h3 class="font-stencil text-xl text-white mb-1">CROWBAR & BAT</h3>
-            <p class="text-xs text-slate-400 mb-4">1 Damage per hit. Reliable crowd control when your stamina pool is running low.</p>
-            <div class="bg-abyss/80 p-3 rounded border border-slate-800 font-mono text-xs text-slate-300">
-              <strong class="text-amber-400">CRIT (6): KNOCKBACK</strong><br>
-              Stuns the zombie, reducing its incoming Bite Damage by 2 this round.
-            </div>
-          </div>
+    <script>
+        const TIMER_DURATION = 600; // 10 minutes in seconds
+        let timeLeft = TIMER_DURATION;
+        let timerInterval;
+        let isRunning = false;
 
-          <!-- Bladed -->
-          <div class="card-grit rounded-xl p-5 border-t-2 border-t-crimson-500">
-            <div class="flex justify-between items-center font-mono text-xs text-crimson-400 mb-2">
-              <span>BLADED // LETHAL</span>
-              <span class="text-white font-bold">HIT: 4–6</span>
-            </div>
-            <h3 class="font-stencil text-xl text-white mb-1">FIRE AXE & MACHETE</h3>
-            <p class="text-xs text-slate-400 mb-4">2 Damage per hit. Built to cleave through high-HP threats before they can strike.</p>
-            <div class="bg-abyss/80 p-3 rounded border border-slate-800 font-mono text-xs text-slate-300">
-              <strong class="text-crimson-400">CRIT (6): 3 DMG // 1: STUCK</strong><br>
-              Rolling a 1 wedges the blade in bone—locking the die AND reducing your Guard by 1.
-            </div>
-          </div>
+        const timerDisplay = document.getElementById('timer');
+        const startBtn = document.getElementById('startBtn');
+        const bellSound = document.getElementById('bellSound');
 
-          <!-- Agile -->
-          <div class="card-grit rounded-xl p-5 border-t-2 border-t-emerald-500">
-            <div class="flex justify-between items-center font-mono text-xs text-emerald-400 mb-2">
-              <span>AGILE // FAST</span>
-              <span class="text-white font-bold">HIT: 3–6</span>
-            </div>
-            <h3 class="font-stencil text-xl text-white mb-1">COMBAT KNIFE & TONFA</h3>
-            <p class="text-xs text-slate-400 mb-4">1 Damage per hit. High accuracy lets you land consistent strikes while holding dice back.</p>
-            <div class="bg-abyss/80 p-3 rounded border border-slate-800 font-mono text-xs text-slate-300">
-              <strong class="text-emerald-400">TRAIT: LIGHT & NIMBLE</strong><br>
-              Rolling a 1 on Round 1 of combat never locks the die as Exhausted.
-            </div>
-          </div>
+        function updateDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
 
-          <!-- Firearms -->
-          <div class="card-grit rounded-xl p-5 border-t-2 border-t-amber-500">
-            <div class="flex justify-between items-center font-mono text-xs text-amber-400 mb-2">
-              <span>FIREARMS // RANGED</span>
-              <span class="text-white font-bold">HIT: 3–6</span>
-            </div>
-            <h3 class="font-stencil text-xl text-white mb-1">9MM & RIOT SHOTGUN</h3>
-            <p class="text-xs text-slate-400 mb-4">3 Damage per hit. Ignores Sprinter speed, but costs 1 Ammo per die rolled.</p>
-            <div class="bg-abyss/80 p-3 rounded border border-slate-800 font-mono text-xs text-slate-300">
-              <strong class="text-amber-400">RISK: LOUD & HUNGRY</strong><br>
-              Raises Sector Decibels and triggers a Horde Noise Check on any rolled 1.
-            </div>
-          </div>
-        </div>
-      </div>
+        function playBell(times) {
+            let count = 0;
+            
+            bellSound.onended = function() {
+                count++;
+                if (count < times) {
+                    bellSound.currentTime = 0;
+                    bellSound.play();
+                }
+            };
+            
+            bellSound.currentTime = 0;
+            bellSound.play().catch(e => console.error("Audio playback failed:", e));
+        }
 
-      <!-- Infected Freakshow -->
-      <div>
-        <div class="max-w-2xl mb-8">
-          <span class="font-mono text-xs uppercase tracking-widest text-amber-400 font-bold">THE UNDEAD ECOSYSTEM</span>
-          <h2 class="font-stencil text-3xl sm:text-4xl text-white mt-1">5 MUTATIONS THAT DISRUPT YOUR DICE POOL</h2>
-        </div>
+        function startTimer() {
+            if (isRunning) return;
+            isRunning = true;
+            
+            // Hide the start button once running
+            startBtn.style.display = 'none';
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          <div class="card-grit p-4 rounded-lg border-l-2 border-l-slate-500">
-            <div class="font-stencil text-lg text-white">SHAMBLER</div>
-            <div class="font-mono text-[11px] text-crimson-400 mb-2">HP: 4 // BITE: 2</div>
-            <p class="text-xs text-slate-300"><strong>Relentless Grab:</strong> Fail to deal 1+ damage on your turn and it grabs your jacket—forcing you to burn 1 extra Guard die next round.</p>
-          </div>
-          <div class="card-grit p-4 rounded-lg border-l-2 border-l-amber-500">
-            <div class="font-stencil text-lg text-white">SPRINTER</div>
-            <div class="font-mono text-[11px] text-crimson-400 mb-2">HP: 3 // BITE: 3</div>
-            <p class="text-xs text-slate-300"><strong>Blur of Speed:</strong> Melee weapons only connect on 5 or 6, forcing you to throw your whole pool into offense or get mauled.</p>
-          </div>
-          <div class="card-grit p-4 rounded-lg border-l-2 border-l-blue-500">
-            <div class="font-stencil text-lg text-white">RIOT-GEAR</div>
-            <div class="font-mono text-[11px] text-crimson-400 mb-2">HP: 8 // BITE: 2</div>
-            <p class="text-xs text-slate-300"><strong>Kevlar & Helmet:</strong> Ignores the first 1 damage each round. Can only be killed if your final blow includes a natural 6 headshot.</p>
-          </div>
-          <div class="card-grit p-4 rounded-lg border-l-2 border-l-emerald-500">
-            <div class="font-stencil text-lg text-white">BLOATER</div>
-            <div class="font-mono text-[11px] text-crimson-400 mb-2">HP: 6 // BITE: 1</div>
-            <p class="text-xs text-slate-300"><strong>Toxic Burst:</strong> Every 1 you roll inhales spores for 1 Acid damage. Melee kills require 1 held Guard die to shield the splash.</p>
-          </div>
-          <div class="card-grit p-4 rounded-lg border-l-2 border-l-crimson-600">
-            <div class="font-stencil text-lg text-white">SCREAMER</div>
-            <div class="font-mono text-[11px] text-crimson-400 mb-2">HP: 2 // BITE: 1</div>
-            <p class="text-xs text-slate-300"><strong>Piercing Shriek:</strong> Every round it survives, roll a D6: on a 5–6, a fresh Shambler breaches the room and joins the fight.</p>
-          </div>
-        </div>
-      </div>
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateDisplay();
 
-      <!-- Collapsible Full Designer Rules Drawer -->
-      <details class="card-grit rounded-xl p-6 group">
-        <summary class="cursor-pointer list-none flex items-center justify-between">
-          <div>
-            <span class="font-mono text-xs text-blue-400 uppercase tracking-wider block">COMPLETE SYSTEM REFERENCE</span>
-            <h3 class="font-stencil text-2xl text-white">OPEN FULL SURVIVOR PROGRESSION & 2D6 MEGAMALL TABLES</h3>
-          </div>
-          <span class="px-3 py-1.5 rounded bg-navy-900 border border-slate-700 font-mono text-xs text-slate-300 group-open:bg-crimson-600 group-open:text-white transition">
-            Toggle Rules Sheet
-          </span>
-        </summary>
+                if (timeLeft <= 0) {
+                    playBell(3);
+                    timeLeft = TIMER_DURATION; // Reset the timer immediately
+                    updateDisplay();
+                }
+            }, 1000);
+        }
 
-        <div class="mt-6 pt-6 border-t border-slate-800 grid md:grid-cols-2 gap-8 text-sm">
-          <div>
-            <h4 class="font-stencil text-lg text-amber-400 mb-3">SURVIVOR LEVELING & WORKBENCH MODS</h4>
-            <ul class="space-y-2.5 text-slate-300 text-xs leading-relaxed">
-              <li><strong class="text-white">Stamina Pool Growth:</strong> Start at Level 1 with <strong>3D6</strong>. Add +1D6 at Levels 3, 6, and 9 (Max 6D6).</li>
-              <li><strong class="text-white">Grit (Re-Rolls):</strong> Start with 1 Grit per fight to re-roll a single Attack die (essential for rescuing a rolled 1 before it locks!). Scales up to 4 Grit at higher levels.</li>
-              <li><strong class="text-white">Second Wind (Recovery):</strong> Once per combat, spend your turn rolling 0 Attack dice to unlock 1–2 Exhausted dice (1s) back into your active pool.</li>
-              <li><strong class="text-white">Settlement Workbench Mods:</strong> Attach <em>Weighted Head</em> (+1 damage when committing 3+ Attack dice) or <em>Ergonomic Grip</em> (ignore the first 1 rolled each fight).</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-stencil text-lg text-blue-400 mb-3">2D6 MEGAMALL SPLIT-DICE TABLE</h4>
-            <div class="overflow-x-auto">
-              <table class="w-full font-mono text-[11px] text-left border-collapse">
-                <thead>
-                  <tr class="border-b border-slate-700 text-slate-400">
-                    <th class="py-1.5 pr-2">Roll</th>
-                    <th class="py-1.5 pr-2">Die 1: Footprint</th>
-                    <th class="py-1.5">Die 2: Zone & Threat</th>
-                  </tr>
-                </thead>
-                <tbody class="divide-y divide-slate-800/80 text-slate-300">
-                  <tr><td class="py-1.5 font-bold text-white">1</td><td>2x3 Service Hallway</td><td>Utility / Low Light</td></tr>
-                  <tr><td class="py-1.5 font-bold text-white">2</td><td>3x3 Glass Kiosk</td><td>Apparel / Bandages</td></tr>
-                  <tr><td class="py-1.5 font-bold text-white">3</td><td>3x5 Narrow Storefront</td><td>Pharmacy / Meds</td></tr>
-                  <tr><td class="py-1.5 font-bold text-white">4</td><td>4x4 Corner Unit</td><td>Security / Ammo & Alarms</td></tr>
-                  <tr><td class="py-1.5 font-bold text-white">5</td><td>4x6 Department Anchor</td><td>Food Court / Bloaters</td></tr>
-                  <tr><td class="py-1.5 font-bold text-white">6</td><td>6x6 Atrium Escalator</td><td>Evac Point / Dense Horde</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </details>
+        startBtn.addEventListener('click', startTimer);
+        
+        // Initialize the display on load
+        updateDisplay();
+    </script>
+</body>
+</html>
